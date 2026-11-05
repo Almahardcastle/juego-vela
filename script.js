@@ -7,11 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnRestart = document.getElementById('btn-restart');
   const flameWrapper = document.getElementById('flame-wrapper');
 
-  let scale = 2.2;         // Tamaño inicial (MUY grande)
-  const minScale = 0.05;   // Escala donde se apaga (pierde)
-  const targetScale = 1.0; // Escala meta para ganar
-  const shrinkRate = 0.004; // Velocidad con la que se desinfla
-  const inflateAmount = 0.12; // Cuánto aumenta por cada click
+  const startScale = 1.0;     // Tamaño con el que inicia la llama
+  const maxScale = 1.8;       // Meta a la que el usuario debe llegar inflando
+  const minScale = 0.05;      // Tamaño mínimo donde se considera apagada
+  const shrinkRate = 0.003;   // Velocidad de desinflado progresivo
+  const inflateAmount = 0.08; // Incremento por toque
+
+  let scale = startScale;
   let gameInterval = null;
 
   function updateFlame() {
@@ -19,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function startGame() {
-    scale = 2.2;
+    scale = startScale;
     updateFlame();
 
     screenStart.classList.remove('active');
@@ -31,18 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
     gameInterval = setInterval(() => {
       scale -= shrinkRate;
 
-      // Si la escala llega cerca del tamaño normal (meta sostenida)
-      if (scale <= targetScale && scale > minScale) {
-        clearInterval(gameInterval);
-        scale = targetScale;
-        updateFlame();
-        setTimeout(winGame, 300);
-        return;
-      }
-
-      // Si la llama se apaga del todo, reinicia la dinámica en la misma pantalla
+      // Si se apaga por completo, reinicia el nivel
       if (scale <= minScale) {
-        scale = 2.2;
+        scale = startScale;
       }
 
       updateFlame();
@@ -50,11 +43,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function inflate() {
-    if (screenGame.classList.contains('active')) {
-      scale += inflateAmount;
-      if (scale > 2.5) scale = 2.5; // Límite máximo para no romper layout
+    if (!screenGame.classList.contains('active')) return;
+
+    scale += inflateAmount;
+
+    // Si alcanza o supera el tamaño máximo objetivo, el jugador gana
+    if (scale >= maxScale) {
+      scale = maxScale;
       updateFlame();
+      clearInterval(gameInterval);
+      setTimeout(winGame, 200);
+      return;
     }
+
+    updateFlame();
   }
 
   function winGame() {
@@ -65,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
   btnStart.addEventListener('click', startGame);
   btnRestart.addEventListener('click', startGame);
 
-  // Soporte para touch y click en la llama
+  // Eventos para interactuar con la llama sin generar selecciones visuales
   flameWrapper.addEventListener('pointerdown', (e) => {
     e.preventDefault();
     inflate();

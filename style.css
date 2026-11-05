@@ -12,11 +12,11 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  -webkit-tap-highlight-color: transparent; /* Elimina cuadro de toque azul en Android/iOS */
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  background-color: #23242a; /* Fondo más clarito */
+  background-color: #23242a;
   color: #ffffff;
   font-family: 'FuenteTitulo', sans-serif;
   min-height: 100vh;
@@ -40,6 +40,11 @@ body {
 
 .screen.active {
   display: flex;
+}
+
+/* Ajuste de espaciado exclusivo para la pantalla final */
+#screen-win {
+  gap: 40px;
 }
 
 .title {
@@ -77,11 +82,11 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 140px; /* Espacio superior para acomodar la llama grande */
+  margin-top: 140px;
 }
 
 .candle-img {
-  width: 220px; /* Tamaño de la vela incrementado */
+  width: 220px;
   height: auto;
   display: block;
   z-index: 1;
@@ -104,7 +109,7 @@ body {
 }
 
 .flame-img {
-  width: 180px; /* Tamaño base de la llama incrementado */
+  width: 180px;
   height: auto;
   display: block;
   pointer-events: auto;

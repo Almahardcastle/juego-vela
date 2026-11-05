@@ -7,13 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnRestart = document.getElementById('btn-restart');
   const flameWrapper = document.getElementById('flame-wrapper');
 
-  const startScale = 1.0;     // Tamaño con el que inicia la llama
-  const maxScale = 1.8;       // Meta a la que el usuario debe llegar inflando
-  const minScale = 0.05;      // Tamaño mínimo donde se considera apagada
-  const shrinkRate = 0.003;   // Velocidad de desinflado progresivo
+  const maxScale = 1.8;       // Tamaño inicial Y meta para ganar
+  const minScale = 0.05;      // Tamaño donde se apaga
+  const shrinkRate = 0.003;   // Velocidad a la que se desinfla
   const inflateAmount = 0.08; // Incremento por toque
 
-  let scale = startScale;
+  let scale = maxScale;
   let gameInterval = null;
 
   function updateFlame() {
@@ -21,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function startGame() {
-    scale = startScale;
+    scale = maxScale; // Inicia en su tamaño máximo
     updateFlame();
 
     screenStart.classList.remove('active');
@@ -33,9 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
     gameInterval = setInterval(() => {
       scale -= shrinkRate;
 
-      // Si se apaga por completo, reinicia el nivel
+      // Si se apaga del todo, vuelve a arrancar desde el tamaño máximo inicial
       if (scale <= minScale) {
-        scale = startScale;
+        scale = maxScale;
       }
 
       updateFlame();
@@ -47,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     scale += inflateAmount;
 
-    // Si alcanza o supera el tamaño máximo objetivo, el jugador gana
+    // Si alcanza nuevamente el tamaño máximo inicial, se gana el juego
     if (scale >= maxScale) {
       scale = maxScale;
       updateFlame();
@@ -67,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
   btnStart.addEventListener('click', startGame);
   btnRestart.addEventListener('click', startGame);
 
-  // Eventos para interactuar con la llama sin generar selecciones visuales
   flameWrapper.addEventListener('pointerdown', (e) => {
     e.preventDefault();
     inflate();

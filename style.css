@@ -12,102 +12,96 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  background-color: #0b0b12;
+  background-color: #111116;
   color: #ffffff;
+  font-family: 'FuenteTitulo', sans-serif;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: sans-serif;
+  overflow-y: auto;
+  padding: 20px 0;
 }
 
 .screen {
   display: none;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 20px;
+  justify-content: center;
+  width: 90%;
+  max-width: 400px;
   text-align: center;
+  gap: 25px;
 }
 
 .screen.active {
   display: flex;
 }
 
-.title-main {
+.title {
   font-family: 'FuenteTitulo', sans-serif;
-  font-size: 2.2rem;
-  margin-bottom: 30px;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  font-size: 1.8rem;
+  line-height: 1.3;
+  word-break: break-word;
 }
 
-.title-instruction {
-  font-family: 'FuenteTitulo', sans-serif;
-  font-size: 1.4rem;
-  position: absolute;
-  top: 40px;
-  z-index: 10;
-  width: 90%;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+.instruction {
+  font-size: 1.3rem;
 }
 
 .btn {
   font-family: 'FuenteBoton', sans-serif;
-  font-size: 1.5rem;
-  padding: 15px 40px;
-  border: none;
-  border-radius: 30px;
+  font-size: 1.4rem;
+  padding: 12px 32px;
   background-color: #ff6b35;
   color: #ffffff;
+  border: none;
+  border-radius: 25px;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
-  transition: transform 0.1s ease, background-color 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  touch-action: manipulation;
 }
 
 .btn:active {
-  transform: scale(0.95);
-  background-color: #e05523;
+  transform: scale(0.96);
 }
 
-/* Contenedor del escenario 1920x1080 escalado */
-.game-stage {
+/* Contenedor principal de la vela y llama */
+.candle-container {
   position: relative;
-  width: 100%;
-  max-width: 100vw;
-  max-height: 100vh;
-  aspect-ratio: 16 / 9;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  margin-top: 60px;
 }
 
-.layer {
+.candle-img {
+  width: 120px;
+  height: auto;
+  display: block;
+  z-index: 1;
+}
+
+/* Posicionamiento de la llama en el borde superior de la vela */
+.flame-wrapper {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  pointer-events: none;
+  bottom: 98%;
+  left: 50%;
+  transform: translateX(-50%) scale(1);
+  transform-origin: bottom center;
+  z-index: 2;
+  cursor: pointer;
+  touch-action: manipulation;
 }
 
-.img-fuego {
+.flame-img {
+  width: 90px;
+  height: auto;
+  display: block;
   pointer-events: auto;
-  cursor: pointer;
-  /* El punto de origen se ajusta si la mecha no estuviera exactamente en el centro inferior */
-  transform-origin: center center;
-  transition: transform 0.08s ease-out;
+  user-select: none;
+  -webkit-user-drag: none;
 }

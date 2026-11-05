@@ -2,33 +2,34 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Evitá que se apague el fuego</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Pantalla 1: Inicio -->
-  <section id="screen-start" class="screen active">
-    <h1 class="title-main">Evitá que se apague el fuego</h1>
+  <!-- Pantalla de Inicio -->
+  <div id="screen-start" class="screen active">
+    <h1 class="title">Evitá que se apague el fuego</h1>
     <button id="btn-start" class="btn">Jugar</button>
-  </section>
+  </div>
 
-  <!-- Pantalla 2: Juego -->
-  <section id="screen-game" class="screen">
-    <h2 class="title-instruction">¡Apretá rápidamente la llama para que no se apague!</h2>
-    
-    <div class="game-stage">
-      <img src="vela.png" alt="Vela" class="layer img-vela">
-      <img src="fuego.png" alt="Fuego" id="flame" class="layer img-fuego">
+  <!-- Pantalla de Juego -->
+  <div id="screen-game" class="screen">
+    <h2 class="title instruction">¡Apreta rapidamente la llama para q no se apague!</h2>
+    <div class="candle-container">
+      <div class="flame-wrapper" id="flame-wrapper">
+        <img src="fuego.png" alt="Llama" class="flame-img" id="flame-img">
+      </div>
+      <img src="vela.png" alt="Vela" class="candle-img">
     </div>
-  </section>
+  </div>
 
-  <!-- Pantalla 3: Final -->
-  <section id="screen-end" class="screen">
-    <h1 class="title-main">Gracias por no dejar que se apague</h1>
+  <!-- Pantalla Final -->
+  <div id="screen-win" class="screen">
+    <h1 class="title">Gracias por no dejar que se apague</h1>
     <button id="btn-restart" class="btn">Jugar de nuevo</button>
-  </section>
+  </div>
 
   <script src="script.js"></script>
 </body>

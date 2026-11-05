@@ -1,0 +1,113 @@
+@font-face {
+  font-family: 'FuenteTitulo';
+  src: url('fuente-titulo.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'FuenteBoton';
+  src: url('fuente-boton.ttf') format('truetype');
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #0b0b12;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+.screen {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  text-align: center;
+}
+
+.screen.active {
+  display: flex;
+}
+
+.title-main {
+  font-family: 'FuenteTitulo', sans-serif;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.title-instruction {
+  font-family: 'FuenteTitulo', sans-serif;
+  font-size: 1.4rem;
+  position: absolute;
+  top: 40px;
+  z-index: 10;
+  width: 90%;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.btn {
+  font-family: 'FuenteBoton', sans-serif;
+  font-size: 1.5rem;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 30px;
+  background-color: #ff6b35;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+  transition: transform 0.1s ease, background-color 0.2s ease;
+}
+
+.btn:active {
+  transform: scale(0.95);
+  background-color: #e05523;
+}
+
+/* Contenedor del escenario 1920x1080 escalado */
+.game-stage {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  max-height: 100vh;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.img-fuego {
+  pointer-events: auto;
+  cursor: pointer;
+  /* El punto de origen se ajusta si la mecha no estuviera exactamente en el centro inferior */
+  transform-origin: center center;
+  transition: transform 0.08s ease-out;
+}

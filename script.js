@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnRestart = document.getElementById('btn-restart');
   const flameWrapper = document.getElementById('flame-wrapper');
 
-  const maxScale = 2.6;       // Tamaño inicial Y meta para ganar (MUY grande)
+  const maxScale = 2.6;       // Tamaño inicial y meta para ganar
   const minScale = 0.05;      // Tamaño donde se apaga
-  const shrinkRate = 0.006;   // Se desinfla más rápido
-  const inflateAmount = 0.035; // Incremento más pequeño por toque para mayor dificultad
+  const shrinkRate = 0.007;   // Se apaga rápido
+  const inflateAmount = 0.22; // Inflado rápido (pocos toques para ganar)
 
   let scale = maxScale;
   let gameInterval = null;
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function startGame() {
-    scale = maxScale; // Inicia en su tamaño máximo gigante
+    scale = maxScale;
     updateFlame();
 
     screenStart.classList.remove('active');
@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
     gameInterval = setInterval(() => {
       scale -= shrinkRate;
 
-      // Si se apaga del todo, reinicia el ciclo desde el tamaño inicial
       if (scale <= minScale) {
         scale = maxScale;
       }
@@ -46,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     scale += inflateAmount;
 
-    // Si alcanza nuevamente el tamaño gigante inicial, el jugador gana
     if (scale >= maxScale) {
       scale = maxScale;
       updateFlame();

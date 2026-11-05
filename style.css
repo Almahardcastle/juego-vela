@@ -44,7 +44,7 @@ body {
 
 #screen-game {
   justify-content: flex-start;
-  padding-top: 100px; /* Desplaza el contenido principal hacia abajo */
+  padding-top: 180px; /* Desplaza el contenido principal hacia abajo */
 }
 
 #screen-win {
@@ -86,11 +86,11 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 60px; /* Posiciona vela y llama más abajo en la pantalla */
+  margin-top: 80px; /* Posiciona vela y llama más abajo en la pantalla */
 }
 
 .candle-img {
-  width: 220px;
+  width: 280px;
   height: auto;
   display: block;
   z-index: 1;
@@ -113,7 +113,7 @@ body {
 }
 
 .flame-img {
-  width: 180px;
+  width: 240px;
   height: auto;
   display: block;
   pointer-events: auto;

@@ -42,7 +42,11 @@ body {
   display: flex;
 }
 
-/* Ajuste de espaciado exclusivo para la pantalla final */
+#screen-game {
+  justify-content: flex-start; /* Alinea los elementos desde arriba para ubicar la vela más abajo con margen */
+  padding-top: 20px;
+}
+
 #screen-win {
   gap: 40px;
 }
@@ -82,7 +86,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 140px;
+  margin-top: 40px; /* Reducido para ubicar la vela más abajo en pantalla */
 }
 
 .candle-img {

@@ -16,7 +16,7 @@
 }
 
 body {
-  background-color: #23242a;
+  background-color: #577744;
   color: #ffffff;
   font-family: 'FuenteTitulo', sans-serif;
   min-height: 100vh;
@@ -44,11 +44,13 @@ body {
 
 #screen-game {
   justify-content: flex-start;
-  padding-top: 180px; /* Desplaza el contenido principal hacia abajo */
+  padding-top: 0px; /* Desplaza el contenido principal hacia abajo */
 }
 
 #screen-win {
-  gap: 40px;
+  justify-content: flex-start; /* Hace que el contenido se alinee arriba */
+  padding-top: 65px;          /* Ajustá este valor según qué tan arriba lo querés */
+  gap: 30px;                  /* Distancia entre el texto y el botón */
 }
 
 .title {
@@ -56,17 +58,19 @@ body {
   font-size: 2.2rem;
   line-height: 1.3;
   word-break: break-word;
+  letter-spacing: 3px;
 }
 
 .instruction {
+  font-family: 'FuenteBoton', sans-serif;
   font-size: 1.5rem;
 }
 
 .btn {
   font-family: 'FuenteBoton', sans-serif;
-  font-size: 1.6rem;
+  font-size: 2.5rem;
   padding: 16px 40px;
-  background-color: #ff6b35;
+  background-color: #98568d;
   color: #ffffff;
   border: none;
   border-radius: 30px;
@@ -86,7 +90,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 80px; /* Posiciona vela y llama más abajo en la pantalla */
+  margin-top: 150px; /* Posiciona vela y llama más abajo en la pantalla */
 }
 
 .candle-img {

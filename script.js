@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const maxScale = 2.6;       // Tamaño inicial y meta para ganar
   const minScale = 0.05;      // Tamaño donde se apaga
-  const shrinkRate = 0.014;   // Se apaga rápido
+  const shrinkRate = 0.20;  // Se apaga rápido
   const inflateAmount = 0.22; // Inflado rápido (pocos toques para ganar)
 
   let scale = maxScale;

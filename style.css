@@ -16,8 +16,13 @@
 }
 
 body {
-  background-color: #577744;
-  color: #ffffff;
+  background-image: url('fondo.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Mantiene el fondo fijo al scrollear */
+
+  color: #f4ecf6;
   font-family: 'FuenteTitulo', sans-serif;
   min-height: 100vh;
   display: flex;
@@ -25,6 +30,7 @@ body {
   align-items: center;
   overflow-y: auto;
   padding: 20px 0;
+  font-weight: normal;
 }
 
 .screen {
@@ -59,18 +65,20 @@ body {
   line-height: 1.3;
   word-break: break-word;
   letter-spacing: 3px;
+  font-weight: normal;
+  text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.3);
 }
 
 .instruction {
   font-family: 'FuenteBoton', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
 }
 
 .btn {
   font-family: 'FuenteBoton', sans-serif;
   font-size: 2.5rem;
   padding: 16px 40px;
-  background-color: #98568d;
+  background-color: #b940a5;
   color: #ffffff;
   border: none;
   border-radius: 30px;
